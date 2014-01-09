@@ -21,16 +21,16 @@
 #define WINDOW_H
 
 // KDE
-#include <KMainWindow>
+#include <QMainWindow>
 
 class QCheckBox;
 class QComboBox;
 class QGroupBox;
 
 class KMessageWidget;
-class KTextEdit;
+class QTextEdit;
 
-class Window : public KMainWindow
+class Window : public QMainWindow
 {
     Q_OBJECT
 public:
@@ -50,7 +50,7 @@ private:
     KMessageWidget* m_messageWidget;
     QList<QAction*> m_actions;
     QCheckBox* m_animatedShowCheckBox;
-    KTextEdit* m_edit;
+    QTextEdit* m_edit;
     QComboBox* m_iconComboBox;
 
     void createMessageButton(QLayout* layout, const QString& label, const char* slot);

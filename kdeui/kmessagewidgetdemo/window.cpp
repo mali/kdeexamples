@@ -20,14 +20,13 @@
 #include <window.h>
 
 // KDE
-#include <KAction>
-#include <KLocale>
+#include <KLocalizedString>
 #include <KMessageWidget>
 #include <KStandardAction>
-#include <KTextEdit>
 #include <kdeversion.h>
 
 // Qt
+#include <QAction>
 #include <QCheckBox>
 #include <QCoreApplication>
 #include <QComboBox>
@@ -35,16 +34,17 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <QTextEdit>
 
 Window::Window(QWidget *parent)
-    : KMainWindow(parent)
+    : QMainWindow(parent)
 {
     QWidget* widget = new QWidget;
     setCentralWidget(widget);
     resize(500, 400);
 
     m_actions
-        << new QAction(KIcon("document-save"), i18n("Save"), this)
+        << new QAction(QIcon::fromTheme(("document-save")), i18n("Save"), this)
         << new QAction(i18n("Discard"), this)
         ;
 
@@ -75,8 +75,8 @@ Window::Window(QWidget *parent)
         mainLayout->addWidget(groupBox);
         QVBoxLayout* layout = new QVBoxLayout(groupBox);
 
-        m_edit = new KTextEdit;
-        m_edit->setClickMessage(i18n("Use default text"));
+        m_edit = new QTextEdit;
+        m_edit->setPlaceholderText(i18n("Use default text"));
         layout->addWidget(m_edit);
     }
 

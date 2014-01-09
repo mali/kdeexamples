@@ -19,24 +19,17 @@
  */
 #include "window.h"
 
-#include <KAboutData>
-#include <KApplication>
-#include <KCmdLineArgs>
-
-static KAboutData about(
-    "KMessageWidgetDemoApplication",
-    "",
-    ki18n("KMessageWidgetDemoApplication"),
-    "1.0",
-    ki18n("Demonstrates basic KMessageWidget usage."),
-    KAboutData::License_LGPL,
-    ki18n("(C) 2011 Aurélien Gâteau")
-    );
+#include <QApplication>
+#include <KLocalizedString>
 
 int main(int argc, char *argv[])
 {
-    KCmdLineArgs::init(argc, argv, &about);
-    KApplication app;
+    QApplication app(argc, argv);
+
+    app.setApplicationName("KMessageWidgetDemoApplication");
+    app.setApplicationVersion("1.0");
+    app.setOrganizationDomain("kde.org");
+    app.setApplicationDisplayName(i18n("KMessageWidgetDemoApplication"));
 
     Window* window = new Window;
     window->show();
